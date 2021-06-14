@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "aa6d1afe-66a1-4bea-a8c6-869df5fae105",
+		"name": "API AUTH",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}{{base_url_auth}}/signup",
+					"host": [
+						"{{base_url}}{{base_url_auth}}"
+					],
+					"path": [
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}{{base_url_auth}}/login",
+					"host": [
+						"{{base_url}}{{base_url_auth}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}{{base_url_auth}}/logout",
+					"host": [
+						"{{base_url}}{{base_url_auth}}"
+					],
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3200/"
+		},
+		{
+			"key": "base_url_auth",
+			"value": "api/auth"
+		}
+	]
+}

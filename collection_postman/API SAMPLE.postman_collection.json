@@ -1,0 +1,56 @@
+{
+	"info": {
+		"_postman_id": "d9abd235-a054-43b3-9631-5b101f98238c",
+		"name": "API SAMPLE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "sample",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}{{base_url_sample}}/sample",
+					"host": [
+						"{{base_url}}{{base_url_sample}}"
+					],
+					"path": [
+						"sample"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3200/"
+		},
+		{
+			"key": "base_url_sample",
+			"value": "api/sample"
+		}
+	]
+}

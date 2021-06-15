@@ -25,7 +25,7 @@ export const signup = async (
 			.then((userCredential) => {
 				const user = userCredential;
 				console.log(userCredential);
-
+				user.user?.sendEmailVerification();
 				return res.status(200).json({
 					user: user,
 				});
@@ -58,7 +58,9 @@ export const login = async (
 			.then((userCredential) => {
 				const user = userCredential;
 				console.log(user);
-
+				if (!user.user?.emailVerified) {
+					user.user?.sendEmailVerification();
+				}
 				return res.status(200).json({
 					user: user,
 				});

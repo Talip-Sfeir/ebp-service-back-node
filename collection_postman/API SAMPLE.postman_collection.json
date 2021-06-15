@@ -8,15 +8,30 @@
 		{
 			"name": "sample",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "password",
+							"value": "{{token}}",
+							"type": "string"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}{{base_url_sample}}/sample",
+					"raw": "{{base_url}}{{base_url_sample}}/",
 					"host": [
 						"{{base_url}}{{base_url_sample}}"
 					],
 					"path": [
-						"sample"
+						""
 					]
 				}
 			},
@@ -51,6 +66,10 @@
 		{
 			"key": "base_url_sample",
 			"value": "api/sample"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImRjNGQwMGJjM2NiZWE4YjU0NTMzMWQxZjFjOTZmZDRlNjdjNTFlODkiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vZWJwLXNlcnZpY2UtYmFjayIsImF1ZCI6ImVicC1zZXJ2aWNlLWJhY2siLCJhdXRoX3RpbWUiOjE2MjM3NDQzNDMsInVzZXJfaWQiOiJnOWxUNW1mdk83VFNZVlBTa3VibmszcjJTOHIyIiwic3ViIjoiZzlsVDVtZnZPN1RTWVZQU2t1Ym5rM3IyUzhyMiIsImlhdCI6MTYyMzc0NDM0MywiZXhwIjoxNjIzNzQ3OTQzLCJlbWFpbCI6ImVtYWlsQGVtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJlbWFpbEBlbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.DXGFbcFqlwPgHHeCbsO7fW39TaQR-fBmouH3fGijtTCHNh0Yvux5l7ilO7DtZ4QN3GTWIUrBGEuVzJpnOCOizyFT8UfW1gw8ldNGwwoS9PBjNnAtLq9v96QP-S-cfzVg-FNqkqmfpI6O74Je-sJV108QNf8VJ8e7Ivy6iRgc6HZG6h2Y81Tk7OyC6zcYanMkEIlukT3tqo2D6PL_7VjBRPluOWL3xVB1pwZ3p8fONaQhjZHmPiPQOFZ-EGKyGyzrN523a9glorb_z71bewHL-pyfr6UpcQz5lY-cj6RUWBqGbPjFwDyiUDEmWXQco9wlLxH1WgA06Ag4KkaBHIW69w"
 		}
 	]
 }

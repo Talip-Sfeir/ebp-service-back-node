@@ -34,7 +34,7 @@ export const signup = async (
 				res.status(500).send(e.message);
 			});
 	} else {
-		return res.status(500).json({ validate: false });
+		return res.status(500).send('Permission denied');
 	}
 };
 
@@ -67,7 +67,7 @@ export const login = async (
 				res.status(500).send(e.message);
 			});
 	} else {
-		return res.status(500).json({ validate: false });
+		return res.status(500).send('Permission denied');
 	}
 };
 
@@ -84,6 +84,39 @@ export const logout = async (
 		.catch((e) => {
 			res.status(500).send(e.message);
 		});
+};
+
+export const reset = async (
+	req: Request,
+	res: Response
+): Promise<void | Response<undefined, Record<string, undefined>>> => {
+	const { email } = req.body;
+	let validate = false;
+
+	if (email !== null) {
+		if (validateEmail(email)) {
+			validate = true;
+		}
+	}
+
+	if (validate) {
+		return fb.firebase.default
+			.auth()
+			.sendPasswordResetEmail(email)
+			.then((userCredential) => {
+				const user = userCredential;
+				console.log(user);
+
+				return res.status(200).json({
+					user: user,
+				});
+			})
+			.catch((e) => {
+				res.status(500).send(e.message);
+			});
+	} else {
+		return res.status(500).send('Permission denied');
+	}
 };
 
 function validateEmail(email: string) {

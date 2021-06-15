@@ -6,6 +6,7 @@ import { errorHandler } from './middlewares/error.middleware';
 import { notFoundHandler } from './middlewares/not-found.middleware';
 import { sampleRouter } from './routers/sample.router';
 import { authRouter } from './routers/auth.router';
+import { validateFirebaseIdToken } from './middlewares/auth.middleware';
 
 dotenv.config();
 
@@ -34,7 +35,7 @@ app.use(express.json());
 
 // Route
 app.use('/api/auth', authRouter);
-// app.use(validateFirebaseIdToken);
+app.use(validateFirebaseIdToken);
 app.use('/api/sample', sampleRouter);
 
 // App use middlewares

@@ -1,4 +1,9 @@
+// Imports & Models
+
 import { Request, Response } from 'express';
+import fb from '../config/firebase';
+
+// Controller Methods
 
 export const signup = async (
 	req: Request,
@@ -14,9 +19,22 @@ export const signup = async (
 	}
 
 	if (validate) {
-		return res.status(200).send('Email and password is valid');
+		return fb.firebase.default
+			.auth()
+			.createUserWithEmailAndPassword(email, password)
+			.then((userCredential) => {
+				const user = userCredential;
+				console.log(userCredential);
+
+				return res.status(200).json({
+					user: user,
+				});
+			})
+			.catch((e) => {
+				res.status(500).send(e.message);
+			});
 	} else {
-		return res.status(500).send('Permission denied');
+		return res.status(500).json({ validate: false });
 	}
 };
 
@@ -34,9 +52,22 @@ export const login = async (
 	}
 
 	if (validate) {
-		return res.status(200).send('Email and password is valid');
+		return fb.firebase.default
+			.auth()
+			.signInWithEmailAndPassword(email, password)
+			.then((userCredential) => {
+				const user = userCredential;
+				console.log(user);
+
+				return res.status(200).json({
+					user: user,
+				});
+			})
+			.catch((e) => {
+				res.status(500).send(e.message);
+			});
 	} else {
-		return res.status(500).send('Permission denied');
+		return res.status(500).json({ validate: false });
 	}
 };
 
@@ -44,7 +75,15 @@ export const logout = async (
 	req: Request,
 	res: Response
 ): Promise<void | Response<undefined, Record<string, undefined>>> => {
-	res.status(200).send('Signed out');
+	return fb.firebase.default
+		.auth()
+		.signOut()
+		.then(() => {
+			res.status(200).send('Signed Out');
+		})
+		.catch((e) => {
+			res.status(500).send(e.message);
+		});
 };
 
 function validateEmail(email: string) {
